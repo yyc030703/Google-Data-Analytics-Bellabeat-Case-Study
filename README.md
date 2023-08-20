@@ -4,8 +4,8 @@ Capstone project for the Google Data Analytics Certificate on Coursera
 ## Table of Contents
 
 1. [Introduction](README.md#introduction)
-2. [Business Task](README.md#business-task)
-3. [Data](README.md#data)
+2. [Ask](README.md#ask)
+3. [Prepare](README.md#prepare)
 4. [Processing and Cleaning](README.md#processing-and-cleaning)
 5. [Analysis and Viz](README.md#analysis-and-viz)
 6. [Conclusion and Recommendations](README.md#conclusions)
@@ -13,11 +13,11 @@ Capstone project for the Google Data Analytics Certificate on Coursera
 ## Introduction
 This Google Data Analytics Cyclistic Case Study is to work for a fictional company, Cyclistic. In 2016, Cyclistic launched a successful bike-share offering. Since then, the program has grown to a fleet of 5,824 bicycles that are geotracked and locked into a network of 692 stations across Chicago. The goal is to design marketing strategies to convert casual riders into annual members and my own task is to understand how casual riders and Cyclistic members behave differently. In order to answer the key business questions, the steps of the data analysis process: ask, prepare, process, analyze, share, and act will be launched.
 
-## Business Task
-> To clean, analyze and visualize the data to observe how casual riders use the bike rentals differently from annual member riders and determine the best marketing strategies to turn casual bike riders into annual members.
+## Ask
+> **Business Task**: To clean, analyze and visualize the data to observe how casual riders use the bike rentals differently from annual member riders and determine the best marketing strategies to turn casual bike riders into annual members.
 
-## Data
-While Cyclistic is a fictional company, the data I will be using is from Divvy, Chicago city's bike share program. The data is collected by sensors on the docking stations and produce the following variables:
+## Prepare
+The datasets are retrieved from https://divvy-tripdata.s3.amazonaws.com/index.html.
 
 * *ride_id*: unique id of a single trip (string)
 * *rideable_type*: type of bike used (string)
