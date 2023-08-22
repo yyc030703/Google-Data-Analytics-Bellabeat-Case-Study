@@ -95,6 +95,72 @@ Remove "bad" data: The dataframe includes a few hundred entries when bikes were 
 ```
 data2022_clean <- data2022_clean[!(data2022_clean$start_station_name == "HQ QR" | data2022_clean$ride_length<0),]
 ```
+## Analyze
+Descriptive analysis on ride_length (all figures in seconds)
+```
+summary(data2022_clean$ride_length)
+Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+0.0     349.0     616.0     979.8    1105.0 2057644.0 
+```
+
+Compare members and casual users
+```
+aggregate(data2022_clean$ride_length ~ data2022_clean$member_casual, FUN = mean)
+  data2022_clean$member_casual data2022_clean$ride_length
+1                       casual                  1319.2825
+2                       member                   744.7387
+aggregate(data2022_clean$ride_length ~ data2022_clean$member_casual, FUN = mean)
+  data2022_clean$member_casual data2022_clean$ride_length
+1                       casual                  1319.2825
+2                       member                   744.7387
+aggregate(data2022_clean$ride_length ~ data2022_clean$member_casual, FUN = median)
+  data2022_clean$member_casual data2022_clean$ride_length
+1                       casual                        778
+2                       member                        530
+aggregate(data2022_clean$ride_length ~ data2022_clean$member_casual, FUN = max)
+  data2022_clean$member_casual data2022_clean$ride_length
+1                       casual                    2057644
+2                       member                      89996
+aggregate(data2022_clean$ride_length ~ data2022_clean$member_casual, FUN = min)
+  data2022_clean$member_casual data2022_clean$ride_length
+1                       casual                          0
+2                       member                          0
+```
+
+The average ride time by each day for members vs casual users, therefore reorder days of the week and rerun
+```
+aggregate(data2022_clean$ride_length ~ data2022_clean$member_casual + data2022_clean$Day_of_week, FUN = mean)
+data2022_clean$Day_of_week <- ordered(data2022_clean$Day_of_week, levels=c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))
+aggregate(data2022_clean$ride_length ~ data2022_clean$member_casual + data2022_clean$Day_of_week, FUN = mean)
+```
+Result:
+```
+data2022_clean$member_casual data2022_clean$Day_of_week data2022_clean$ride_length
+1                        casual                     Sunday                  1505.9880
+2                        member                     Sunday                   821.7778
+3                        casual                     Monday                  1357.7269
+4                        member                     Monday                   720.2955
+5                        casual                    Tuesday                  1177.9052
+6                        member                    Tuesday                   708.6599
+7                        casual                  Wednesday                  1140.0512
+8                        member                  Wednesday                   710.0717
+9                        casual                   Thursday                  1180.4805
+10                       member                   Thursday                   720.6420
+11                       casual                     Friday                  1231.8108
+12                       member                     Friday                   733.5506
+13                       casual                   Saturday                  1478.6859
+14                       member                   Saturday                   827.4545
+```
+
+analyze ridership data by type and weekday
+```
+data2022_clean %>% 
+  mutate(weekday = wday(started_at, label = TRUE)) %>%  
+  group_by(member_casual, weekday) %>%
+  summarise(number_of_rides = n()							
+            ,average_duration = mean(ride_length)) %>% 		
+  arrange(member_casual, weekday)
+```
 
 # Recommendations
 
