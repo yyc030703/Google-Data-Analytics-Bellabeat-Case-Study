@@ -17,23 +17,45 @@ This Google Data Analytics Cyclistic Case Study is to work for a fictional compa
 > **Business Task**: To clean, analyze and visualize the data to observe how casual riders use the bike rentals differently from annual member riders and determine the best marketing strategies to turn casual bike riders into annual members.
 
 ## Prepare
-The datasets are retrieved from https://divvy-tripdata.s3.amazonaws.com/index.html.
+The datasets are retrieved from https://divvy-tripdata.s3.amazonaws.com/index.html and are in .csv format.
 
-* *ride_id*: unique id of a single trip (string)
-* *rideable_type*: type of bike used (string)
-* *started_at*: date and time the bike was undocked (datetime)
-* *ended_at*: date and time the bike was docked (datetime)
-* *start_station_name*: location of start docking station (string)
-* *start_station_id*: id of start docking station (string)
-* *end_station_name*: location of end docking station (string)
-* *end_station_id*: id of end docking station (string)
-* *start_lat*: start docking station latitude (numeric)
-* *start_lng*: start docking station longitude (numeric)
-* *end_lat*: end docking station latitude (numeric)
-* *end_lng*: end docking station longitude (numeric)
-* *member_casual*: rider type (string)
+Install the required packages for the project.
+```
+install.packages("tidyverse")
+install.packages("janitor")
+install.packages("ggmap")
+library(tidyverse)
+library(tibble)
+library(readr)
+library(janitor)
+library(rmarkdown)
+library(ggplot2)
+library(ggmap)
+```
 
-The data is published as CSV files and can be found at [Divvy Trip Data](https://divvy-tripdata.s3.amazonaws.com/index.html).
+Save each csv files into data frames.
+```
+df1<-read.csv("/Users/yangyungchyi/Documents/Learn/Cyclistic/202201-divvy-tripdata.csv", header = TRUE)
+df2<-read.csv("/Users/yangyungchyi/Documents/Learn/Cyclistic/202202-divvy-tripdata.csv", header = TRUE)
+df3<-read.csv("/Users/yangyungchyi/Documents/Learn/Cyclistic/202203-divvy-tripdata.csv", header = TRUE)
+df4<-read.csv("/Users/yangyungchyi/Documents/Learn/Cyclistic/202204-divvy-tripdata.csv", header = TRUE)
+df5<-read.csv("/Users/yangyungchyi/Documents/Learn/Cyclistic/202205-divvy-tripdata.csv", header = TRUE)
+df6<-read.csv("/Users/yangyungchyi/Documents/Learn/Cyclistic/202206-divvy-tripdata.csv", header = TRUE)
+df7<-read.csv("/Users/yangyungchyi/Documents/Learn/Cyclistic/202207-divvy-tripdata.csv", header = TRUE)
+df8<-read.csv("/Users/yangyungchyi/Documents/Learn/Cyclistic/202208-divvy-tripdata.csv", header = TRUE)
+df9<-read.csv("/Users/yangyungchyi/Documents/Learn/Cyclistic/202209-divvy-publictripdata.csv", header = TRUE)
+df10<-read.csv("/Users/yangyungchyi/Documents/Learn/Cyclistic/202210-divvy-tripdata.csv", header = TRUE)
+df11<-read.csv("/Users/yangyungchyi/Documents/Learn/Cyclistic/202211-divvy-tripdata.csv", header = TRUE)
+df12<-read.csv("/Users/yangyungchyi/Documents/Learn/Cyclistic/202212-divvy-tripdata.csv", header = TRUE)
+```
+check if there is any mismatch of the column name before combining
+```
+compare_df_cols(df1,df2,df3,df4,df5,df6,df7,df8,df9,df10,df11,df12, return = "mismatch")
+```
+bind the dataframes into one dataframe
+```
+data2022<-rbind(df1,df2,df3,df4,df5,df6,df7,df8,df9,df10,df11,df12)
+```
 
 # Data Cleaning and Transformation
 Given that the total number of observations is greater than five million, I decided to clean and process the data with R, using RStudio. 
