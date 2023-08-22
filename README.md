@@ -6,7 +6,7 @@ Capstone project for the Google Data Analytics Certificate on Coursera
 1. [Introduction](README.md#introduction)
 2. [Ask](README.md#ask)
 3. [Prepare](README.md#prepare)
-4. [Processing and Cleaning](README.md#processing-and-cleaning)
+4. [Process](README.md#process)
 5. [Analysis and Viz](README.md#analysis-and-viz)
 6. [Conclusion and Recommendations](README.md#conclusions)
    
@@ -17,9 +17,9 @@ This Google Data Analytics Cyclistic Case Study is to work for a fictional compa
 > **Business Task**: To clean, analyze and visualize the data to observe how casual riders use the bike rentals differently from annual member riders and determine the best marketing strategies to turn casual bike riders into annual members.
 
 ## Prepare
-The datasets are retrieved from https://divvy-tripdata.s3.amazonaws.com/index.html and are in .csv format.
+The datasets are retrieved from https://divvy-tripdata.s3.amazonaws.com/index.html and are in .csv format. Given that the data is in large amounts, I decided to use Rstudio to prepare and clean up the data.
 
-Install the required packages for the project.
+First, Install the required packages for the project.
 ```
 install.packages("tidyverse")
 install.packages("janitor")
@@ -48,90 +48,50 @@ df10<-read.csv("/Users/yangyungchyi/Documents/Learn/Cyclistic/202210-divvy-tripd
 df11<-read.csv("/Users/yangyungchyi/Documents/Learn/Cyclistic/202211-divvy-tripdata.csv", header = TRUE)
 df12<-read.csv("/Users/yangyungchyi/Documents/Learn/Cyclistic/202212-divvy-tripdata.csv", header = TRUE)
 ```
-check if there is any mismatch of the column name before combining
+Check if there is any mismatch of the column name before combining
 ```
 compare_df_cols(df1,df2,df3,df4,df5,df6,df7,df8,df9,df10,df11,df12, return = "mismatch")
 ```
-bind the dataframes into one dataframe
+Bind the dataframes into one dataframe
 ```
 data2022<-rbind(df1,df2,df3,df4,df5,df6,df7,df8,df9,df10,df11,df12)
 ```
 
-# Data Cleaning and Transformation
-Given that the total number of observations is greater than five million, I decided to clean and process the data with R, using RStudio. 
-
-After setting up the working directory, the first thing I did was to setup the environment. For the purpose of this project, I needed the ```tidyverse``` and ```lubridate``` packages:
-
+## Process
+Clean the data by dropping NA values and using the distinct function.
 ```
-install.packages('tidyverse')
-install.packages('lubridate')
-library(tidyverse)
-library(lubridate)
+data2022_clean<-data2022%>%
+  drop_na()%>%
+  distinct()
 ```
-
-My analysis had to cover the period from October 2020 to September 2021, so I downloaded and imported the relevant CSV files in RStudio:
-
+Add columns that separate the dates into month, day, year and day of the week:
 ```
-oct_2020 <- read_csv("CSV\\202010-divvy-tripdata.csv")
-nov_2020 <- read_csv("CSV\\202011-divvy-tripdata.csv")
-dec_2020 <- read_csv("CSV\\202012-divvy-tripdata.csv")
-jan_2021 <- read_csv("CSV\\202101-divvy-tripdata.csv") 
-feb_2021 <- read_csv("CSV\\202102-divvy-tripdata.csv") 
-mar_2021 <- read_csv("CSV\\202103-divvy-tripdata.csv")
-apr_2021 <- read_csv("CSV\\202104-divvy-tripdata.csv")
-may_2021 <- read_csv("CSV\\202105-divvy-tripdata.csv")
-jun_2021 <- read_csv("CSV\\202106-divvy-tripdata.csv")
-jul_2021 <- read_csv("CSV\\202107-divvy-tripdata.csv")
-aug_2021 <- read_csv("CSV\\202108-divvy-tripdata.csv")
-sep_2021 <- read_csv("CSV\\202109-divvy-tripdata.csv") 
+data2022_clean$Date<-as.Date(data2022_clean$started_at)
+data2022_clean$Month<- format(as.Date(data2022_clean$Date), "%m")
+data2022_clean$Day<- format(as.Date(data2022_clean$Date), "%d")
+data2022_clean$Year<- format(as.Date(data2022_clean$Date), "%Y")
+data2022_clean$Day_of_week<- format(as.Date(data2022_clean$Date), "%A")
 ```
-
-While checking the structure of the resulting tables using ```str()```, I noticed that the fields *start_station_id* and *end_station_id*, in tables *oct_2020* and *nov_2020*, were numerics, when they should have been characters. After checking the data to see if there are any other general differences in these particular fields, I coerced the fields in *oct_2020* and *nov_2020* into characters, so that they were consistent with the other tables:
-
+Create a new columns called "ride length". The unit is second.
 ```
-oct_2020$start_station_id <- as.character(oct_2020$start_station_id)
-oct_2020$end_station_id <- as.character(oct_2020$end_station_id)
-nov_2020$start_station_id <- as.character(nov_2020$start_station_id)
-nov_2020$end_station_id <- as.character(nov_2020$end_station_id)
+data2022_clean$ride_length <- difftime(data2022_clean$ended_at,data2022_clean$started_at)
+```
+Inspect the structure of the columns
+```
+str(data2022_clean)
+```
+Convert "ride_length" from Factor to numeric so we can run calculations on the data
+```
+is.factor(data2022_clean$ride_length)
+data2022_clean$ride_length <- as.numeric(as.character(data2022_clean$ride_length))
+is.numeric(data2022_clean$ride_length)
+```
+Remove "bad" data: The dataframe includes a few hundred entries when bikes were taken out of docks and checked for quality by Divvy or ride_length was negative
+```
+data2022_clean <- data2022_clean[!(data2022_clean$start_station_name == "HQ QR" | data2022_clean$ride_length<0),]
 ```
 
-Next, I merged all the tables into a single one:
 
-```
-cyc <- rbind(oct_2020, nov_2020, dec_2020, jan_2021, feb_2021, mar_2021, 
-             apr_2021, may_2021, jun_2021, jul_2021, aug_2021, sep_2021)
-```
-
-After that, I had to remove some test entries and empty fields that were caused by bad sensor data and check for any remaining NA entries:
-
-```
-cyc_filtered <- cyc %>% 
-  filter(start_station_id != "TEST", 
-         start_station_name != "WATSON TESTING - DIVVY") %>% 
-  filter(end_station_id != "TEST", 
-         end_station_name != "WATSON TESTING - DIVVY") %>% 
-  drop_na()
-anyNA(cyc_filtered)
-```
-
-Then, I created a table containing just the fields relevant to my analysis, namely *started_at*, *ended_at* and *member_casual*:
-
-```
-cyc_clean <- cyc_filtered[c(3, 4, 13)]
-cyc_clean
-```
-
-For the analysis, I needed to create a trip duration variable. Since the data type of *started_at* and *ended_at* was datetime, I used ```difftime()``` to calculate the duration of each trip. I had to account for negative durations due to faulty data, and durations of less than a minute caused by bike docking tests, so I filtered out all durations under one minute:
-
-```
-cyc_clean <- cyc_clean %>% 
-  mutate(trip_length = difftime(ended_at, started_at, units = "mins")) %>% 
-  filter(trip_length >= 1)
-```
-
-I also wanted to compare the users' daily and monthly rides, so I needed to create day and month fields:
-
-```
 cyc_clean$weekday <- wday(cyc_clean$started_at, label = TRUE, abbr = TRUE)
 cyc_clean$month <- month(cyc_clean$started_at, label = TRUE, abbr = TRUE)
 ```
