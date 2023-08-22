@@ -64,6 +64,7 @@ data2022_clean<-data2022%>%
   drop_na()%>%
   distinct()
 ```
+
 Add columns that separate the dates into month, day, year and day of the week:
 ```
 data2022_clean$Date<-as.Date(data2022_clean$started_at)
@@ -72,20 +73,24 @@ data2022_clean$Day<- format(as.Date(data2022_clean$Date), "%d")
 data2022_clean$Year<- format(as.Date(data2022_clean$Date), "%Y")
 data2022_clean$Day_of_week<- format(as.Date(data2022_clean$Date), "%A")
 ```
+
 Create a new columns called "ride length". The unit is second.
 ```
 data2022_clean$ride_length <- difftime(data2022_clean$ended_at,data2022_clean$started_at)
 ```
+
 Inspect the structure of the columns
 ```
 str(data2022_clean)
 ```
+
 Convert "ride_length" from Factor to numeric so we can run calculations on the data
 ```
 is.factor(data2022_clean$ride_length)
 data2022_clean$ride_length <- as.numeric(as.character(data2022_clean$ride_length))
 is.numeric(data2022_clean$ride_length)
 ```
+
 Remove "bad" data: The dataframe includes a few hundred entries when bikes were taken out of docks and checked for quality by Divvy or ride_length was negative
 ```
 data2022_clean <- data2022_clean[!(data2022_clean$start_station_name == "HQ QR" | data2022_clean$ride_length<0),]
