@@ -7,8 +7,9 @@ Capstone project for the Google Data Analytics Certificate on Coursera
 2. [Ask](README.md#ask)
 3. [Prepare](README.md#prepare)
 4. [Process](README.md#process)
-5. [Analysis and Viz](README.md#analysis-and-viz)
-6. [Conclusion and Recommendations](README.md#conclusions)
+5. [Analyze](README.md#analyze)
+   * [Visualization](README.md#Visualization)
+7. [Conclusion and Recommendations](README.md#conclusions)
    
 ## Introduction
 This Google Data Analytics Cyclistic Case Study is to work for a fictional company, Cyclistic. In 2016, Cyclistic launched a successful bike-share offering. Since then, the program has grown to a fleet of 5,824 bicycles that are geotracked and locked into a network of 692 stations across Chicago. The goal is to design marketing strategies to convert casual riders into annual members and my own task is to understand how casual riders and Cyclistic members behave differently. In order to answer the key business questions, the steps of the data analysis process: ask, prepare, process, analyze, share, and act will be launched.
@@ -161,6 +162,29 @@ data2022_clean %>%
             ,average_duration = mean(ride_length)) %>% 		
   arrange(member_casual, weekday)
 ```
+Result:
+```
+# A tibble: 14 × 4
+# Groups:   member_casual [2]
+   member_casual weekday number_of_rides average_duration
+   <chr>         <ord>             <int>            <dbl>
+ 1 casual        Sun              388011            1506.
+ 2 casual        Mon              277054            1358.
+ 3 casual        Tue              263187            1178.
+ 4 casual        Wed              273823            1140.
+ 5 casual        Thu              308713            1180.
+ 6 casual        Fri              333938            1232.
+ 7 casual        Sat              472082            1479.
+ 8 member        Sun              387117             822.
+ 9 member        Mon              473249             720.
+10 member        Tue              518507             709.
+11 member        Wed              523770             710.
+12 member        Thu              532154             721.
+13 member        Fri              466985             734.
+14 member        Sat              443169             827.
+```
+### Visualization
+I chose Tableau as my visualization tool. I have created dashboard that can be found here: https://public.tableau.com/app/profile/yung.chyi.yang/viz/Book1_16901963257690/Dashboard1?publish=yes
 
 # Recommendations
 
