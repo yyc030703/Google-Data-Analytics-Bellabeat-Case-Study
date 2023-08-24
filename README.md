@@ -9,7 +9,7 @@ Capstone project for the Google Data Analytics Certificate on Coursera
 4. [Process](README.md#process)
 5. [Analyze](README.md#analyze)
    * [Visualization](README.md#Visualization)
-7. [Conclusion and Recommendations](README.md#conclusions)
+7. [Act (Recommendations)](README.md#Act (Recommendations))
    
 ## Introduction
 This Google Data Analytics Cyclistic Case Study is to work for a fictional company, Cyclistic. In 2016, Cyclistic launched a successful bike-share offering. Since then, the program has grown to a fleet of 5,824 bicycles that are geotracked and locked into a network of 692 stations across Chicago. The goal is to design marketing strategies to convert casual riders into annual members and my own task is to understand how casual riders and Cyclistic members behave differently. In order to answer the key business questions, the steps of the data analysis process: ask, prepare, process, analyze, share, and act will be launched.
@@ -186,7 +186,7 @@ Result:
 ### Visualization
 I chose Tableau as my visualization tool. I have created dashboard that can be found here: https://public.tableau.com/app/profile/yung.chyi.yang/viz/GoogleDataAnalyticsCapstoneProject_16929053599130/Dashboard1
 
-# Recommendations
+## Act (Recommendations)
 
 * In order to convince casual users to become annual members, we need to convince them to see bicycles as an every day mode of transportation. This could be done by creating incentives for consistent use. An example would be presenting our bikes as an environmentally friendly alternative to cars and public transportation and creating an environmental awareness program, with rewards for annual members who consistently use the service.
 
