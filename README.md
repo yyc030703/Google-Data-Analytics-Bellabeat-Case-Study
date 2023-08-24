@@ -110,10 +110,6 @@ aggregate(data2022_clean$ride_length ~ data2022_clean$member_casual, FUN = mean)
   data2022_clean$member_casual data2022_clean$ride_length
 1                       casual                  1319.2825
 2                       member                   744.7387
-aggregate(data2022_clean$ride_length ~ data2022_clean$member_casual, FUN = mean)
-  data2022_clean$member_casual data2022_clean$ride_length
-1                       casual                  1319.2825
-2                       member                   744.7387
 aggregate(data2022_clean$ride_length ~ data2022_clean$member_casual, FUN = median)
   data2022_clean$member_casual data2022_clean$ride_length
 1                       casual                        778
@@ -184,12 +180,12 @@ Result:
 14 member        Sat              443169             827.
 ```
 ### Visualization
-I chose Tableau as my visualization tool. I have created dashboard that can be found here: https://public.tableau.com/app/profile/yung.chyi.yang/viz/GoogleDataAnalyticsCapstoneProject_16929053599130/Dashboard1
+I chose Tableau as my visualization tool. I have created a dashboard that can be found here: https://public.tableau.com/app/profile/yung.chyi.yang/viz/GoogleDataAnalyticsCapstoneProject_16929053599130/Dashboard1
 
 ## Act (Recommendations)
+The recommendations I would provide to fulfill the business task are:
+* Enhance incentives for cold-weather riding, such as distributing coupons and offering discounts. The aim is to promote rides during different seasons, considering that the Summer season currently stands as the most favored.
+  
+* Casual riders are more active on weekends, therefore implementing discount campaigns targeted at casual riders during weekdays could serve as a motivational factor for them to choose the service for their daily commute, potentially leading to their conversion into regular members.
 
-* In order to convince casual users to become annual members, we need to convince them to see bicycles as an every day mode of transportation. This could be done by creating incentives for consistent use. An example would be presenting our bikes as an environmentally friendly alternative to cars and public transportation and creating an environmental awareness program, with rewards for annual members who consistently use the service.
-
-* According to my analysis, the vast majority of casual riders use the bikes during the weekend. We could create limited time offers that only last during specific weekends, in order to both target as many casual members as possible and entice them with a time incentive.
-
-* Casual riders' use of the bikes rises sharply, to even surpass that of members,  during the summer months. Thus, the best time to launch a major marketing campaign would be from mid May to early/mid September.
+* As shown in the analysis, casual riders frequently choose routes along the coastline. To capitalize on this trend, the company could offer membership benefits at stations located near the coast and on specific routes that are particularly favored by casual riders.
