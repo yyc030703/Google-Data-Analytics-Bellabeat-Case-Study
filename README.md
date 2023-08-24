@@ -1,16 +1,17 @@
 # Google-Data-Analytics-Cyclistic-Case-Study
 Capstone project for the Google Data Analytics Certificate on Coursera
-Analysis Visualization can be found in https://public.tableau.com/app/profile/yung.chyi.yang/viz/GoogleDataAnalyticsCapstoneProject_16929053599130/Dashboard1
+
+Visualization Analysis can be found in [My Tableau](https://public.tableau.com/app/profile/yung.chyi.yang/viz/GoogleDataAnalyticsCapstoneProject_16929053599130/Dashboard1)
 
 ## Table of Contents
 
-1. [Introduction](README.md#introduction)
-2. [Ask](README.md#ask)
-3. [Prepare](README.md#prepare)
-4. [Process](README.md#process)
-5. [Analyze](README.md#analyze)
+1. [Introduction](README.md##introduction)
+2. [Ask](README.md##ask)
+3. [Prepare](README.md##prepare)
+4. [Process](README.md##process)
+5. [Analyze](README.md##analyze)
    * [Visualization](README.md#Visualization)
-7. [Act (Recommendations)](README.md#Act (Recommendations))
+7. [Act (Recommendations)](README.md##Act (Recommendations))
    
 ## Introduction
 This Google Data Analytics Cyclistic Case Study is to work for a fictional company, Cyclistic. In 2016, Cyclistic launched a successful bike-share offering. Since then, the program has grown to a fleet of 5,824 bicycles that are geotracked and locked into a network of 692 stations across Chicago. The goal is to design marketing strategies to convert casual riders into annual members and my own task is to understand how casual riders and Cyclistic members behave differently. In order to answer the key business questions, the steps of the data analysis process: ask, prepare, process, analyze, share, and act will be launched.
