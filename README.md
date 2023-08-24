@@ -1,5 +1,6 @@
 # Google-Data-Analytics-Cyclistic-Case-Study
 Capstone project for the Google Data Analytics Certificate on Coursera
+Analysis Visualization can be found in https://public.tableau.com/app/profile/yung.chyi.yang/viz/GoogleDataAnalyticsCapstoneProject_16929053599130/Dashboard1
 
 ## Table of Contents
 
