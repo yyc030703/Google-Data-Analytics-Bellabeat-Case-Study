@@ -184,7 +184,7 @@ Result:
 14 member        Sat              443169             827.
 ```
 ### Visualization
-I chose Tableau as my visualization tool. I have created dashboard that can be found here: https://public.tableau.com/app/profile/yung.chyi.yang/viz/Book1_16901963257690/Dashboard1?publish=yes
+I chose Tableau as my visualization tool. I have created dashboard that can be found here: https://public.tableau.com/app/profile/yung.chyi.yang/viz/GoogleDataAnalyticsCapstoneProject_16929053599130/Dashboard1
 
 # Recommendations
 
