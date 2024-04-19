@@ -5,11 +5,11 @@ Visualization Analysis can be found in [My Tableau](https://public.tableau.com/a
 
 ## Table of Contents
 
-1. [Introduction](README.md##introduction)
-2. [Ask](README.md##ask)
-3. [Prepare](README.md##prepare)
-4. [Process](README.md##process)
-5. [Analyze](README.md##analyze)
+1. [Introduction](README.md##Introduction)
+2. [Ask](README.md##Ask)
+3. [Prepare](README.md##Prepare)
+4. [Process](README.md##Process)
+5. [Analyze](README.md##Analyze)
    * [Visualization](README.md#Visualization)
 7. [Act (Recommendations)](README.md##Act (Recommendations))
    
