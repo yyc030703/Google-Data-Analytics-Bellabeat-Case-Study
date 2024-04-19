@@ -5,13 +5,13 @@ Visualization Analysis can be found in [My Tableau](https://public.tableau.com/a
 
 ## Table of Contents
 
-1. [Introduction](README.md##Introduction)
-2. [Ask](README.md##Ask)
-3. [Prepare](README.md##Prepare)
-4. [Process](README.md##Process)
-5. [Analyze](README.md##Analyze)
-   * [Visualization](README.md#Visualization)
-7. [Act (Recommendations)](README.md##Act (Recommendations))
+1. [Introduction](#introduction)
+2. [Ask](#ask)
+3. [Prepare](#prepare)
+4. [Process](#process)
+5. [Analyze](#analyze)
+   * [Visualization](#visualization)
+7. [Act (Recommendations)](README.md##Act-(Recommendations))
    
 ## Introduction
 This Google Data Analytics Cyclistic Case Study is to work for a fictional company, Cyclistic. In 2016, Cyclistic launched a successful bike-share offering. Since then, the program has grown to a fleet of 5,824 bicycles that are geotracked and locked into a network of 692 stations across Chicago. The goal is to design marketing strategies to convert casual riders into annual members and my own task is to understand how casual riders and Cyclistic members behave differently. In order to answer the key business questions, the steps of the data analysis process: ask, prepare, process, analyze, share, and act will be launched.
